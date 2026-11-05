@@ -1,23 +1,36 @@
 # Arif Agent
 
-The multi-axis extension of [Zabibu Weaver](../Zabibu%20Weaver). Weaver is deliberately
-narrow: it does software engineering, deeply, with a deterministic gate. Arif Agent inherits that
-core and adds the axes that are not code — growth and business operations — on the same
-verification, memory, reversibility, and provenance rules.
+The multi-axis extension of [Zabibu Weaver](https://github.com/Zabibu-Technika/ZabibuWeaver).
+Weaver is deliberately narrow: it does software engineering, deeply, with a deterministic
+gate. Arif Agent inherits that core and adds the axes that are not code — growth and
+business operations — on the same verification, memory, reversibility, and provenance rules.
 
-It is a **sibling project**, not a subfolder:
+It is a **sibling repository**, not a subfolder:
 
 ```
-Projects/Zabibu Architect/
-├── Zabibu Weaver/      upstream: core/, engines/coding/, src/ (the runnable engine)
-└── Arif Agent/         this project
-    ├── core/           generated copy of ../../Zabibu Weaver/core
+Projects/
+├── ZabibuWeaver/       upstream: core/, engines/coding/, src/ (the runnable engine)
+└── ArifAgent/          this repository
+    ├── core/           generated copy of ../ZabibuWeaver/core
     ├── engines/
-    │   ├── coding/     generated copy of ../../Zabibu Weaver/engines/coding
+    │   ├── coding/     generated copy of ../ZabibuWeaver/engines/coding
     │   ├── growth/     owned here: analytics, social queue, publishing
     │   └── bizops/     owned here: invoices, CRM outbox
+    ├── site/           marketing site, deployed to arifagent.vercel.app
     └── sync-daemon.py
 ```
+
+## Repositories and site
+
+- **Code:** this repository — <https://github.com/Zabibu-Technika/ArifAgent>
+- **Arif site:** [`site/`](site/) — <https://arifagent.vercel.app>
+- **Weaver (upstream):** <https://github.com/Zabibu-Technika/ZabibuWeaver>
+- **Main Zabibu Technika website:** <https://github.com/Zabibu-Technika/zabibu> — <https://zabibu.vercel.app>
+
+A standalone clone needs its sibling: clone `ZabibuWeaver` beside this repository, then run
+`npm run sync`. The daemon looks for `../ZabibuWeaver` (and the old `../Zabibu Weaver` name)
+or accepts `--upstream PATH`. The site is deployed from `site/` with
+`vercel --prod --yes --project arifagent`.
 
 ## What is inherited and what is owned
 
@@ -145,6 +158,7 @@ Weaver's loop through `core/`, not copy `src/`.
 ## Direction
 
 The shared roadmap is
-[../Zabibu Weaver/ROADMAP.md](../Zabibu%20Weaver/ROADMAP.md). Arif Agent's own items are
+[ZabibuWeaver/ROADMAP.md](https://github.com/Zabibu-Technika/ZabibuWeaver/blob/main/ROADMAP.md).
+Arif Agent's own items are
 workstream K, and the African-realities and self-dependence constraints in workstreams I
 and J apply here too.

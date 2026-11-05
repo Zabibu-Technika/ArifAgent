@@ -7,8 +7,8 @@ would drift within a week, and the first thing to drift would be a safety defaul
 
 LAYOUT
     Projects/
-      Zabibu Weaver/        <- upstream: core/, engines/coding/
-      Arif Agent/           <- this project: engines/growth/, engines/bizops/
+      ZabibuWeaver/         <- upstream: core/, engines/coding/
+      ArifAgent/            <- this project: engines/growth/, engines/bizops/
         core/               <- generated copy
         engines/coding/     <- generated copy
 
@@ -20,7 +20,7 @@ WHY COPIES AND NOT SYMLINKS
     wrote is treated as a local edit and never overwritten without --force.
 
 USAGE
-    python sync-daemon.py                  sync once from ../Zabibu Weaver
+    python sync-daemon.py                  sync once from ../ZabibuWeaver
     python sync-daemon.py --check          report drift, change nothing, exit 1 if drifted
     python sync-daemon.py --watch 30       re-check every 30 seconds
     python sync-daemon.py --prune          remove files deleted upstream (only if unmodified)
@@ -41,7 +41,20 @@ import time
 from pathlib import Path
 
 ARIF_AGENT_ROOT = Path(__file__).resolve().parent
-UPSTREAM_DEFAULT = ARIF_AGENT_ROOT.parent / "Zabibu Weaver"
+
+
+def default_upstream() -> Path:
+    """Find the sibling Weaver checkout across the old and split repo names."""
+    for name in ("ZabibuWeaver", "Zabibu Weaver", "zabibu-weaver"):
+        candidate = ARIF_AGENT_ROOT.parent / name
+        if (candidate / "core").is_dir():
+            return candidate
+    # Fall back to the split-repo name so the error message points at the right clone.
+    return ARIF_AGENT_ROOT.parent / "ZabibuWeaver"
+
+
+UPSTREAM_DEFAULT = default_upstream()
+
 MANIFEST = ARIF_AGENT_ROOT / ".sync-manifest.json"
 
 # Directories inherited from the Weaver core. Arif Agent's own engines are not listed here:
@@ -199,7 +212,7 @@ def main(argv: list[str]) -> int:
         type=Path,
         default=UPSTREAM_DEFAULT,
         metavar="PATH",
-        help="upstream Weaver checkout (default: sibling 'Zabibu Weaver')",
+        help="upstream Weaver checkout (default: sibling 'ZabibuWeaver')",
     )
     args = parser.parse_args(argv)
 
