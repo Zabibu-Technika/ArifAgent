@@ -25,7 +25,8 @@ Projects/
 - **Code:** this repository — <https://github.com/Zabibu-Technika/ArifAgent>
 - **Arif site:** [`site/`](site/) — <https://arifagent.vercel.app>
 - **Weaver (upstream):** <https://github.com/Zabibu-Technika/ZabibuWeaver>
-- **Main Zabibu Technika website:** <https://github.com/Zabibu-Technika/zabibu> — <https://zabibu.vercel.app>
+- **Fikra site and product hub:** <https://github.com/Zabibu-Technika/ZabibuFikra> — <https://zabibufikra.vercel.app>
+- **Company site:** <https://zabibu.vercel.app>
 
 A standalone clone needs its sibling: clone `ZabibuWeaver` beside this repository, then run
 `npm run sync`. The daemon looks for `../ZabibuWeaver` (and the old `../Zabibu Weaver` name)
