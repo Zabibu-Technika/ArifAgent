@@ -49,6 +49,31 @@ The daemon refuses to overwrite a file you edited locally: it hashes what it cop
 time, and a mismatch is reported as a conflict rather than silently resolved. `--force`
 discards your edit; that is a deliberate speed bump, not an inconvenience to work around.
 
+## Windows build (no Node required)
+
+`arif-agent.exe` is a self-contained Windows x64 build: a native launcher, the official Node
+24 runtime, and the app. Node does not need to be installed on the machine.
+
+- **Download:** [arif-agent-0.2.0-win-x64.zip](https://github.com/Zabibu-Technika/ArifAgent/releases/latest/download/arif-agent-0.2.0-win-x64.zip)
+- **One-line install (PowerShell):**
+
+  ```powershell
+  irm https://raw.githubusercontent.com/Zabibu-Technika/ArifAgent/main/packaging/install.ps1 | iex
+  ```
+
+- **Manual:** extract the zip, run `Install.cmd`, then `arif-agent`.
+
+The release publishes `SHA256SUMS.txt` and `release.json`. The launcher is Authenticode-signed
+with the Zabibu Technika development certificate; a publicly trusted certificate is the
+remaining step for SmartScreen trust on a clean machine. See
+[packaging/SIGNING.md](packaging/SIGNING.md).
+
+Build the package yourself:
+
+```powershell
+.\packaging\build-windows.ps1
+```
+
 ## Safety posture
 
 Arif Agent uses Weaver's tool contract, so the same three declarations apply to every tool:
