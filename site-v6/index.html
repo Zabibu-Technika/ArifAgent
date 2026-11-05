@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zabibu Arif 6 — coming soon</title>
+<meta name="description" content="Zabibu Arif 6 is coming: speech detection, a canvas-based interface, professional tools built in, the offline/native build, and more.">
+<meta name="theme-color" content="#160e0d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-7.2-4.6-9.3-9.5C1.1 7.8 3.3 4.5 6.8 4.5c2.1 0 3.7 1.2 4.5 2.6l.7 1.2.7-1.2c.8-1.4 2.4-2.6 4.5-2.6 3.5 0 5.7 3.3 4.1 7C19.2 16.4 12 21 12 21z' fill='%23f2635a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="hgHead" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4d6d"/>
+            <stop offset=".55" stop-color="#f2635a"/>
+            <stop offset="1" stop-color="#ff9a5c"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 21s-7.2-4.6-9.3-9.5C1.1 7.8 3.3 4.5 6.8 4.5c2.1 0 3.7 1.2 4.5 2.6l.7 1.2.7-1.2c.8-1.4 2.4-2.6 4.5-2.6 3.5 0 5.7 3.3 4.1 7C19.2 16.4 12 21 12 21z" fill="url(#hgHead)"/>
+      </svg>
+      <span>
+        <span class="brand-word">ZABIBU ARIF</span>
+        <span class="brand-sub">Version 6</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#features">Features</a>
+      <a href="#status">Status</a>
+      <a href="#current">Current release</a>
+      <a href="#release">The release</a>
+    </nav>
+    <div class="head-actions">
+      <a class="btn btn-coral btn-sm" href="https://github.com/Zabibu-Technika/ArifAgent">Follow the build <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> Zabibu Arif 6 // Coming soon</p>
+        <h1>The next Arif.<br><span class="grad">Coming soon.</span></h1>
+        <p class="lede">
+          A new era of the multi-axis workspace. <strong>Speech detection</strong>, a
+          <strong>canvas-based interface</strong>, <strong>professional tools built in</strong>,
+          and the <strong>offline/native build</strong> finally coming. And more.
+        </p>
+        <div class="actions">
+          <a class="btn btn-coral" href="https://github.com/Zabibu-Technika/ArifAgent">Follow the build <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="https://arifagent.vercel.app">Use Arif Agent 0.2</a>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>Release</dt><dd>Zabibu Arif 6</dd></div>
+          <div><dt>Status</dt><dd>In build</dd></div>
+          <div><dt>Platform</dt><dd>Native · offline</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 560 560" role="img">
+          <defs>
+            <linearGradient id="heartStroke" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff4d6d"/>
+              <stop offset=".5" stop-color="#f2635a"/>
+              <stop offset="1" stop-color="#ff9a5c"/>
+            </linearGradient>
+            <radialGradient id="heartGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#f2635a" stop-opacity=".38"/>
+              <stop offset=".55" stop-color="#ff4d6d" stop-opacity=".12"/>
+              <stop offset="1" stop-color="#f2635a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <circle cx="280" cy="276" r="190" fill="url(#heartGlow)"/>
+          <ellipse cx="280" cy="276" rx="216" ry="216" fill="none" stroke="rgba(255,166,146,.16)" stroke-dasharray="4 11"/>
+          <ellipse cx="280" cy="276" rx="184" ry="248" fill="none" stroke="rgba(255,166,146,.09)" stroke-dasharray="3 13" transform="rotate(28 280 276)"/>
+
+          <g fill="none" stroke="url(#heartStroke)" stroke-width="1.8" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+            <path d="M280 150 L205 98 L140 112 L104 178 L128 262 L280 430 L432 262 L456 178 L420 112 L355 98 Z" fill="rgba(242,99,90,.045)"/>
+            <path d="M280 150 L280 430 M128 262 L432 262 M280 260 L205 98 M280 260 L355 98 M280 260 L104 178 M280 260 L456 178 M280 260 L140 112 M280 260 L420 112" stroke-opacity=".7"/>
+            <path d="M280 200 L230 165 L190 175 L175 215 L190 255 L280 350 L370 255 L385 215 L370 175 L330 165 Z" stroke-opacity=".45" stroke-width="1.2"/>
+          </g>
+
+          <g fill="none" stroke="rgba(255,166,146,.38)" stroke-width="1.1">
+            <g transform="translate(58 92) scale(.85)">
+              <path d="M0 18 L18 8 L36 18 L36 40 L18 50 L0 40 Z"/>
+              <path d="M0 18 L18 28 L36 18 M18 28 L18 50"/>
+            </g>
+            <g transform="translate(430 78) scale(.65)">
+              <path d="M0 18 L18 8 L36 18 L36 40 L18 50 L0 40 Z"/>
+              <path d="M0 18 L18 28 L36 18 M18 28 L18 50"/>
+            </g>
+            <g transform="translate(430 408) scale(1.1)">
+              <path d="M0 18 L18 8 L36 18 L36 40 L18 50 L0 40 Z"/>
+              <path d="M0 18 L18 28 L36 18 M18 28 L18 50"/>
+            </g>
+            <g transform="translate(70 398) scale(.55)">
+              <path d="M0 18 L18 8 L36 18 L36 40 L18 50 L0 40 Z"/>
+              <path d="M0 18 L18 28 L36 18 M18 28 L18 50"/>
+            </g>
+          </g>
+
+          <g fill="#f2635a">
+            <circle cx="446" cy="184" r="3" opacity=".8"/>
+            <circle cx="120" cy="330" r="2.4" opacity=".6"/>
+            <circle cx="360" cy="468" r="2.6" opacity=".7"/>
+            <rect x="90" y="210" width="4" height="4" opacity=".6"/>
+            <rect x="480" y="300" width="4" height="4" opacity=".45"/>
+            <rect x="210" y="474" width="4" height="4" opacity=".5"/>
+          </g>
+        </svg>
+        <div class="version-badge">V6<small>Coming</small></div>
+        <span class="art-caption">Fig. 06 — the next heart</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-group">
+        <span>Speech detection</span><span>Canvas interface</span><span>Professional tools</span><span>Offline native</span><span>And more</span><span>Zabibu Arif 6</span><span>Coming soon</span><span>Nairobi</span>
+      </div>
+      <div class="ticker-group">
+        <span>Speech detection</span><span>Canvas interface</span><span>Professional tools</span><span>Offline native</span><span>And more</span><span>Zabibu Arif 6</span><span>Coming soon</span><span>Nairobi</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="features" class="section">
+    <div class="section-label">01 / What's coming</div>
+    <div class="section-head">
+      <h2>Not a point release. <span class="grad">A new surface.</span></h2>
+      <p class="copy">Zabibu Arif 6 is a rebuild of the workspace around the way the work actually happens: spoken, spatial, professional, and local.</p>
+    </div>
+
+    <div class="axis-grid">
+      <article class="axis-card">
+        <span class="axis-num">01 / Speech</span>
+        <h3>Speech detection</h3>
+        <p>Talk to the workspace. Local speech detection turns intent into actions without shipping your audio to a server.</p>
+      </article>
+      <article class="axis-card">
+        <span class="axis-num">02 / Canvas</span>
+        <h3>Canvas-based interface</h3>
+        <p>A spatial canvas for documents, code, plans, and outputs. Arrange the work the way you think, not in a single chat column.</p>
+      </article>
+      <article class="axis-card">
+        <span class="axis-num">03 / Tools</span>
+        <h3>Professional tools built in</h3>
+        <p>Code, growth, bizops, writing, finance, research. First-party tools with one permission model and one proof trail.</p>
+      </article>
+      <article class="axis-card">
+        <span class="axis-num">04 / Native</span>
+        <h3>Offline / native build</h3>
+        <p>The build that finally runs without a browser or a network. Native, local, and yours—on the machine you already have.</p>
+      </article>
+      <article class="axis-card">
+        <span class="axis-num">05 / More</span>
+        <h3>And more</h3>
+        <p>A new memory layer, faster routing, and a cleaner proof trail. The rest lands with the build.</p>
+      </article>
+      <article class="axis-card">
+        <span class="axis-num">06 / The core</span>
+        <h3>Same verified core</h3>
+        <p>Every new surface inherits Weaver's verification, decision memory, reversibility, and account discipline.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="status" class="section">
+    <div class="section-label">02 / The build</div>
+    <div class="section-head">
+      <h2>In progress. <span class="grad">In the open.</span></h2>
+      <p class="copy">The work is happening in the Arif Agent repository. Follow the commits, or keep using the current release while v6 is built.</p>
+    </div>
+
+    <div id="current" class="two-col">
+      <article class="info-card">
+        <div class="card-top"><span class="tag">Now</span><span class="big-num">0.2</span></div>
+        <h3>Arif Agent 0.2</h3>
+        <p>The current multi-axis release. Download it for Windows, or read the source. It is the base v6 is being built on.</p>
+        <div class="actions"><a class="btn" href="https://arifagent.vercel.app">Open the current site</a></div>
+      </article>
+      <article class="info-card">
+        <div class="card-top"><span class="tag">Next</span><span class="big-num">6</span></div>
+        <h3>Zabibu Arif 6</h3>
+        <p>Speech, canvas, professional tools, and the native/offline build. No date promised; the build lands when the proof holds.</p>
+        <div class="actions"><a class="btn btn-coral" href="https://github.com/Zabibu-Technika/ArifAgent">Follow the build <span aria-hidden="true">↗</span></a></div>
+      </article>
+    </div>
+
+    <div class="terminal status-terminal" aria-label="Zabibu Arif 6 build status">
+      <div class="terminal-bar"><i></i><i></i><i></i><span>zabibu-arif — status --v6</span></div>
+      <pre><span class="c">ZABIBU ARIF 6</span> <span class="d">· in build</span>
+<span class="d">──────────────────────────────────</span>
+release   <span class="w">6.0.0</span>          <span class="d">in build</span>
+speech    <span class="w">local STT</span>      <span class="d">in build</span>
+canvas    <span class="w">spatial UI</span>     <span class="d">in build</span>
+tools     <span class="w">first-party</span>    <span class="d">in build</span>
+native    <span class="w">offline</span>        <span class="d">in build</span>
+date      <span class="w">when ready</span>     <span class="d">no promise</span>
+
+<span class="d">›</span> <span class="c">proof before ship</span> <span class="d">· follow the commits</span></pre>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Zabibu Arif 6 at a glance">
+    <div class="stat"><strong>6</strong><span>version</span></div>
+    <div class="stat"><strong>4+</strong><span>headline features</span></div>
+    <div class="stat"><strong>1</strong><span>verified core</span></div>
+    <div class="stat"><strong>0</strong><span>cloud required</span></div>
+  </section>
+
+  <section id="release" class="section">
+    <div class="manifesto">
+      <p class="kicker">The release</p>
+      <h2>Zabibu Arif 6 is <span class="grad">coming.</span></h2>
+      <p class="copy">Speech detection. A canvas. Professional tools. The native build. And more. Follow the build, or start with the current release today.</p>
+      <div class="actions">
+        <a class="btn btn-coral" href="https://github.com/Zabibu-Technika/ArifAgent">Follow the build <span aria-hidden="true">↗</span></a>
+        <a class="btn" href="https://arifagent.vercel.app">Use Arif Agent 0.2</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="hgFoot" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4d6d"/>
+            <stop offset=".55" stop-color="#f2635a"/>
+            <stop offset="1" stop-color="#ff9a5c"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 21s-7.2-4.6-9.3-9.5C1.1 7.8 3.3 4.5 6.8 4.5c2.1 0 3.7 1.2 4.5 2.6l.7 1.2.7-1.2c.8-1.4 2.4-2.6 4.5-2.6 3.5 0 5.7 3.3 4.1 7C19.2 16.4 12 21 12 21z" fill="url(#hgFoot)"/>
+      </svg>
+      <span class="brand-word">ZABIBU ARIF</span>
+      <p>Zabibu Arif 6 is the next surface of the multi-axis workspace. Built in the open, on one verified core.</p>
+      <p class="footer-loc">Nairobi, Kenya / East Africa</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Ecosystem</p>
+      <a href="https://zabibuweaver.vercel.app">Weaver</a>
+      <a href="https://arifagent.vercel.app">Zabibu Arif 0.2</a>
+      <a href="https://zabibufikra.vercel.app">Fikra</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Version 6</p>
+      <a href="#features">Features</a>
+      <a href="#status">Status</a>
+      <a href="#current">Current release</a>
+      <a href="#release">The release</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-heading">Company</p>
+      <a href="https://zabibu.vercel.app">Zabibu Technika</a>
+      <a href="https://github.com/Zabibu-Technika/ArifAgent">GitHub</a>
+      <a href="https://github.com/Zabibu-Technika/ZabibuWeaver/blob/main/LICENSE">MIT license</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Zabibu Technika. All rights reserved.</span>
+    <span>ZABIBU ARIF 6 / COMING SOON</span>
+    <span class="mono">Designed from Nairobi.</span>
+  </div>
+</footer>
+</body>
+</html>
