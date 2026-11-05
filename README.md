@@ -24,14 +24,16 @@ Projects/
 
 - **Code:** this repository — <https://github.com/Zabibu-Technika/ArifAgent>
 - **Arif site:** [`site/`](site/) — <https://arifagent.vercel.app>
+- **Zabibu Arif 6 (coming soon):** [`site-v6/`](site-v6/) — <https://zabibuarif.vercel.app>
 - **Weaver (upstream):** <https://github.com/Zabibu-Technika/ZabibuWeaver>
 - **Fikra site and product hub:** <https://github.com/Zabibu-Technika/ZabibuFikra> — <https://zabibufikra.vercel.app>
 - **Company site:** <https://zabibu.vercel.app>
 
 A standalone clone needs its sibling: clone `ZabibuWeaver` beside this repository, then run
 `npm run sync`. The daemon looks for `../ZabibuWeaver` (and the old `../Zabibu Weaver` name)
-or accepts `--upstream PATH`. The site is deployed from `site/` with
-`vercel --prod --yes --project arifagent`.
+or accepts `--upstream PATH`. The current site is deployed from `site/` with
+`vercel --prod --yes --project arifagent`; the v6 coming-soon page is deployed from
+`site-v6/` with `vercel --prod --yes --project zabibuarif`.
 
 ## What is inherited and what is owned
 
