@@ -800,6 +800,7 @@ h3 {
 
 .start { text-align: center; }
 .start .actions { justify-content: center; }
+.start .copy { margin-left: auto; margin-right: auto; }
 
 .code {
   max-width: 680px;
