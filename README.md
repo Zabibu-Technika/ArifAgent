@@ -74,6 +74,9 @@ Build the package yourself:
 .\packaging\build-windows.ps1
 ```
 
+Measured release facts, package numbers, and the honest competitive position are in
+[BENCHMARKS.md](BENCHMARKS.md).
+
 ## Safety posture
 
 Arif Agent uses Weaver's tool contract, so the same three declarations apply to every tool:
