@@ -38,6 +38,7 @@
       <a href="#product">Product</a>
       <a href="#engine">Engine</a>
       <a href="#axes">Axes</a>
+      <a href="#download">Download</a>
       <a href="#accounts">Accounts</a>
       <a href="#start">Start</a>
     </nav>
@@ -60,8 +61,8 @@
           per turn.
         </p>
         <div class="actions">
-          <a class="btn btn-coral" href="#product">Meet Zabibu Arif <span aria-hidden="true">↗</span></a>
-          <a class="btn" href="#engine">Meet Arif Agent</a>
+          <a class="btn btn-coral" href="#download">Download for Windows <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="#product">Meet Zabibu Arif</a>
         </div>
         <dl class="hero-facts">
           <div><dt>Product</dt><dd>Zabibu Arif</dd></div>
@@ -259,8 +260,37 @@ workspace <span class="w">~/.weaver/workspace</span>
     </div>
   </section>
 
+  <section id="download" class="section">
+    <div class="section-label">03 / Download</div>
+    <div class="download-panel">
+      <div class="download-copy">
+        <p class="kicker">Windows 10/11 · x64</p>
+        <h2>Download Arif Agent <span class="grad">0.2.0</span></h2>
+        <p class="copy">Self-contained: the official Node 24 runtime is included. Code, growth, and business operations from one executable.</p>
+        <div class="download-meta">
+          <span class="tag">arif-agent-0.2.0-win-x64.zip</span>
+          <span class="tag tag-plain">33.7 MB</span>
+          <span class="tag tag-plain">SHA256 published</span>
+          <span class="tag">Authenticode signed*</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-coral" href="https://github.com/Zabibu-Technika/ArifAgent/releases/latest/download/arif-agent-0.2.0-win-x64.zip">Download .zip <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="https://github.com/Zabibu-Technika/ArifAgent/releases/tag/v0.2.0">Release notes</a>
+        </div>
+        <p class="fine">* Signed with the Zabibu Technika development certificate. A publicly trusted certificate is the remaining step for SmartScreen trust on a clean machine. <a href="https://github.com/Zabibu-Technika/ArifAgent/blob/main/packaging/SIGNING.md">Signing details</a> · <a href="https://github.com/Zabibu-Technika/ArifAgent/releases/latest/download/SHA256SUMS.txt">SHA256</a>.</p>
+      </div>
+      <div class="download-install">
+        <p class="kicker">One-line install</p>
+        <pre class="code">irm https://raw.githubusercontent.com/Zabibu-Technika/ArifAgent/main/packaging/install.ps1 | iex</pre>
+        <p class="fine">PowerShell 5.1+. Installs to <code>%LOCALAPPDATA%\Zabibu\ArifAgent</code>, verifies the SHA256, and adds <code>arif-agent</code> to PATH. It uses the shared base workspace at <code>%USERPROFILE%\.weaver\workspace</code>.</p>
+        <pre class="code small">arif-agent --version
+arif-agent status</pre>
+      </div>
+    </div>
+  </section>
+
   <section id="accounts" class="section">
-    <div class="section-label">03 / Identity</div>
+    <div class="section-label">04 / Identity</div>
     <div class="section-head">
       <h2>Multiple sign-ins. One chosen account. <span class="grad">No silent switches.</span></h2>
     </div>
@@ -345,6 +375,7 @@ npm start</pre>
       <a href="#product">Zabibu Arif</a>
       <a href="#engine">Arif Agent</a>
       <a href="#axes">Axes</a>
+      <a href="#download">Download</a>
       <a href="#accounts">Accounts</a>
     </div>
     <div class="footer-col">
