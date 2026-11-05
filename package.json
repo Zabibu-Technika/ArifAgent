@@ -1,0 +1,28 @@
+{
+  "name": "arif-agent",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Arif Agent — the multi-axis extension of Zabibu Weaver: code, growth, and business operations on one verified core.",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "bin": {
+    "arif-agent": "./bin/arif-agent.mjs"
+  },
+  "scripts": {
+    "start": "node cli/index.ts",
+    "tui": "node cli/index.ts",
+    "preview": "node scripts/render-preview.mjs",
+    "sync": "python sync-daemon.py",
+    "check": "python sync-daemon.py --check",
+    "pretest": "python sync-daemon.py",
+    "test": "node --test \"engines/**/*.test.ts\" \"cli/**/*.test.ts\"",
+    "smoke:tui": "node scripts/smoke-tui.mjs",
+    "typecheck": "node node_modules/typescript/bin/tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3"
+  }
+}
