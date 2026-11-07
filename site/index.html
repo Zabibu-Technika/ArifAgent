@@ -38,6 +38,7 @@
       <a href="#product">Product</a>
       <a href="#engine">Extension</a>
       <a href="#axes">Capabilities</a>
+      <a href="#tui">Live demo</a>
       <a href="#download">Download</a>
       <a href="#accounts">Accounts</a>
     </nav>
@@ -258,8 +259,98 @@ accounts  <span class="g">●</span> GitHub   <span class="w">teh317</span>     
     </div>
   </section>
 
+  <section id="tui" class="section">
+    <div class="section-label">03 / Live demo</div>
+    <div class="section-head">
+      <h2>Don't read the feature list. <span class="grad">Use the TUI.</span></h2>
+      <p class="copy">A scripted demo of the real Arif Agent terminal. Type a command, press <code>:</code> for the palette, or click an axis. Run <code>compare</code> to see how it stacks up against OpenCode, Claude Code, and Codex. Nothing runs on your machine.</p>
+    </div>
+
+    <div class="tui" id="arif-tui" role="region" aria-label="Interactive Arif Agent terminal demo">
+      <div class="tui-top">
+        <div class="tui-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span class="tui-title">arif-agent — interactive demo</span>
+        <button class="tui-demo" type="button" id="tui-demo">Run demo <span aria-hidden="true">↗</span></button>
+      </div>
+
+      <div class="tui-body">
+        <aside class="tui-side" aria-label="Demo panes">
+          <p class="tui-side-label">Axes</p>
+          <button type="button" class="tui-tab is-active" data-pane="overview">01 / Overview</button>
+          <button type="button" class="tui-tab" data-pane="code">02 / Code</button>
+          <button type="button" class="tui-tab" data-pane="growth">03 / Growth</button>
+          <button type="button" class="tui-tab" data-pane="bizops">04 / Bizops</button>
+          <button type="button" class="tui-tab" data-pane="proof">05 / Proof</button>
+          <button type="button" class="tui-tab" data-pane="memory">06 / Memory</button>
+          <button type="button" class="tui-tab" data-pane="accounts">07 / Accounts</button>
+          <button type="button" class="tui-tab" data-pane="compare">08 / Compare</button>
+
+          <p class="tui-side-label">Accounts</p>
+          <div class="tui-side-accounts">
+            <span><b>GitHub</b><em id="tui-gh">teh317</em></span>
+            <span><b>Vercel</b><em id="tui-vc">Zabibu Technika</em></span>
+          </div>
+
+          <p class="tui-side-label">Session</p>
+          <div class="tui-side-card"><span class="tui-dot"></span> demo workspace<small>~/.weaver/workspace</small></div>
+        </aside>
+
+        <div class="tui-main">
+          <div class="tui-pane-head">
+            <span id="tui-pane-title">Overview</span>
+            <span class="tui-pane-meta" id="tui-pane-meta">proof 1/1 · 0 deps · local-first</span>
+          </div>
+          <div class="tui-screen" id="tui-screen" role="log" aria-live="polite" aria-label="Arif Agent terminal output">
+            <div class="tui-line tui-accent">ZABIBU ARIF 0.2.0 <span class="tui-dim">· multi-axis workspace</span></div>
+            <div class="tui-line tui-dim">Type help, or press : for the palette.</div>
+            <div class="tui-line tui-dim">────────────────────────────────────────</div>
+            <div class="tui-line">axes      <span class="tui-white">code</span>   <span class="tui-white">growth</span>   <span class="tui-white">bizops</span></div>
+            <div class="tui-line">proof     <span class="tui-ok">1 receipt · proved 1/1</span></div>
+            <div class="tui-line">workspace <span class="tui-white">~/.weaver/workspace</span></div>
+            <noscript><div class="tui-line tui-warn">This demo needs JavaScript. The real TUI runs locally; download Arif Agent to try it.</div></noscript>
+          </div>
+          <form class="tui-input-row" id="tui-form">
+            <span class="tui-prompt" aria-hidden="true">›</span>
+            <input class="tui-input" id="tui-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help, or press : for the palette" aria-label="Arif Agent command">
+            <button class="tui-run" type="submit">run ↵</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="tui-foot">
+        <span><kbd>:</kbd> palette</span>
+        <span><kbd>↑</kbd><kbd>↓</kbd> history</span>
+        <span><kbd>tab</kbd> complete</span>
+        <span><kbd>1–8</kbd> panes</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+
+      <div class="tui-overlay" id="tui-palette" hidden>
+        <div class="tui-dialog" role="dialog" aria-modal="true" aria-labelledby="tui-palette-title">
+          <div class="tui-dialog-head">
+            <span id="tui-palette-title">Command palette</span>
+            <button type="button" class="tui-close" data-close="palette" aria-label="Close palette">esc</button>
+          </div>
+          <input class="tui-palette-input" id="tui-palette-input" type="text" autocomplete="off" spellcheck="false" placeholder="Filter commands…" aria-label="Filter commands">
+          <div class="tui-palette-list" id="tui-palette-list"></div>
+        </div>
+      </div>
+
+      <div class="tui-overlay" id="tui-accounts" hidden>
+        <div class="tui-dialog" role="dialog" aria-modal="true" aria-labelledby="tui-accounts-title">
+          <div class="tui-dialog-head">
+            <span id="tui-accounts-title">Switch account</span>
+            <button type="button" class="tui-close" data-close="accounts" aria-label="Close accounts">esc</button>
+          </div>
+          <p class="tui-dialog-copy">The account, the consequence, and the way back — before anything changes.</p>
+          <div class="tui-account-list" id="tui-account-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="download" class="section">
-    <div class="section-label">03 / Download</div>
+    <div class="section-label">04 / Download</div>
     <div class="download-panel">
       <div class="download-copy">
         <p class="kicker">Windows 10/11 · x64</p>
@@ -289,7 +380,7 @@ arif-agent status</pre>
   </section>
 
   <section id="accounts" class="section">
-    <div class="section-label">04 / Identity</div>
+    <div class="section-label">05 / Identity</div>
     <div class="section-head">
       <h2>Multiple sign-ins. One chosen account. <span class="grad">No silent switches.</span></h2>
     </div>
@@ -369,6 +460,7 @@ arif-agent status</pre>
       <a href="https://zabibuarif.lovable.app">Zabibu Arif</a>
       <a href="#engine">Arif Agent</a>
       <a href="#axes">Capabilities</a>
+      <a href="#tui">Live demo</a>
       <a href="#download">Download</a>
     </div>
     <div class="footer-col">
@@ -385,5 +477,6 @@ arif-agent status</pre>
     <span class="mono">Designed from Nairobi.</span>
   </div>
 </footer>
+<script src="tui.js" defer></script>
 </body>
 </html>
