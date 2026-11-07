@@ -1,22 +1,22 @@
 # Release benchmarks and competitive position
 
 Measured **2026-11-05** on Windows 11 Pro (10.0.26220), Intel Core i5-6300U
-(2 cores / 4 threads), 7.8 GB RAM. These are release facts for **Arif Agent v0.2.0**,
+(2 cores / 4 threads), 7.8 GB RAM. These are release facts for **Arif Agent v0.3.0**,
 not a model-quality benchmark.
 
 ## Release facts
 
 | Item | Value |
 |---|---|
-| Version | 0.2.0 |
-| Windows package | `arif-agent-0.2.0-win-x64.zip` |
-| Zip size | 35,313,538 bytes (33.7 MB) |
+| Version | 0.3.0 |
+| Windows package | `arif-agent-0.3.0-win-x64.zip` |
+| Zip size | 35,329,890 bytes (33.7 MB) |
 | Installed size | 87.4 MB |
 | Bundled runtime | Node v24.14.1 |
-| SHA256 | `49ed39bf8e62a9e58f02d8bb295c15eaea4dc779e236bf8599614cfd2365432c` |
+| SHA256 | `0bfd37f1fdbdd6b79c1a12f627474efcacf84cdb9613d708d099fa52feafcdd6` |
 | Signature | Authenticode, Zabibu Technika development certificate |
-| Tests | 25 pass |
-| Test duration | 4,590 ms |
+| Tests | 28 pass |
+| Test duration | 11,386 ms |
 | Typecheck | clean |
 | Runtime npm dependencies | 0 (inherited core included) |
 
@@ -38,7 +38,7 @@ core, so `sync` is not needed to run the agent.
 
 ## End-to-end checks on the packaged build
 
-- Extracted the release zip and ran `arif-agent.exe --version` → `0.2.0`.
+- Extracted the release zip and ran `arif-agent.exe --version` → `0.3.0`.
 - Ran `arif-agent.exe status` against the shared base workspace.
 - Queued a post locally; nothing was published.
 - Drafted an invoice; the result was a local markdown file with integer-cent arithmetic.
@@ -47,6 +47,16 @@ core, so `sync` is not needed to run the agent.
 
 Not yet measured: real publishing and CRM adapters, long-running business workflows,
 multi-account switching under failure, and model-quality comparisons.
+
+## Shared core additions
+
+- **LSP** — `arif-agent lsp diagnostics|definition|references|hover <file> [line] [char]`.
+  Reads `.weaver/lsp.json`; read-only.
+- **MCP** — `arif-agent mcp list` and `arif-agent mcp call <mcp__server__tool> :: <json>`.
+  Reads `.weaver/mcp.json`; unknown capabilities ask first.
+- **Subagents** — `arif-agent subagent "<prompt>"` delegates read-only research to the shared
+  Weaver loop. The Arif package does not bundle Weaver; set `WEAVER_BIN` or put `weaver` on
+  PATH.
 
 ## Competitive position
 
@@ -71,9 +81,10 @@ one verification and reversibility model. Drafting, queueing, and publishing are
 actions; nothing is sent by a draft. The account switcher is explicit. It inherits Weaver's
 gate and receipts instead of reimplementing them.
 
-**Where Arif is behind.** It is early (0.2.0). Publishing is a local queue with no adapter by
+**Where Arif is behind.** It is early (0.3.0). Publishing is a local queue with no adapter by
 default; CRM writes go to a local outbox; invoices are markdown drafts, not an accounting
-integration. There is no plugin ecosystem, no real business-task benchmark, and no
+integration. LSP and MCP need configured servers, and subagents delegate to an installed
+Weaver binary. There is no plugin ecosystem, no real business-task benchmark, and no
 multi-user or server mode. The Windows build still uses a development certificate.
 
 **What would change the answer.** Real adapters for at least one publishing platform and one
@@ -89,5 +100,5 @@ npm run typecheck
 .\packaging\build-windows.ps1
 ```
 
-Then extract `dist\arif-agent-0.2.0-win-x64.zip`, run `arif-agent.exe --version`, and compare
+Then extract `dist\arif-agent-0.3.0-win-x64.zip`, run `arif-agent.exe --version`, and compare
 the zip hash with `dist\SHA256SUMS.txt`.

@@ -3,6 +3,8 @@
 import { spawn } from "node:child_process";
 import { growthTools } from "../engines/growth/tools.ts";
 import { bizopsTools } from "../engines/bizops/tools.ts";
+import { lspTool } from "../core/lsp/tool.ts";
+import { callMcpTool, mcpStatus } from "../core/mcp/index.ts";
 import { detectChecks, runChecks } from "../core/verification/index.ts";
 import { summarizeProof, writeReceipt } from "../core/verification/receipt.ts";
 import { ledgerFor, record, type DecisionKind } from "../core/memory/decisions.ts";
@@ -118,6 +120,127 @@ export function syncCheck(arifAgentRoot: string): Promise<ActionResult> {
     child.on("close", (code) => {
       const last = output.trim().split("\n").filter((line) => line.length > 0).pop();
       resolvePromise({ ok: code === 0, message: last ?? `sync exited ${code}` });
+    });
+  });
+}
+
+/** LSP diagnostics, definition, references, or hover through the shared core. */
+export async function lspAction(workspace: string, args: string[]): Promise<ActionResult> {
+  const [action = "", path = "", line, character] = args;
+  if (action.length === 0 || path.length === 0) {
+    return {
+      ok: false,
+      message: "usage: lsp <diagnostics|definition|references|hover> <file> [line] [character]",
+    };
+  }
+  const result = await lspTool.run(
+    {
+      action,
+      path,
+      line: line === undefined ? undefined : Number(line),
+      character: character === undefined ? undefined : Number(character),
+    },
+    { workspace },
+  );
+  return { ok: result.ok, message: result.output };
+}
+
+/** List configured MCP servers, or call one exposed tool. */
+export async function mcpAction(workspace: string, args: string[], payload = ""): Promise<ActionResult> {
+  const command = (args[0] ?? "list").toLowerCase();
+
+  if (command === "call") {
+    const exposed = args[1] ?? "";
+    if (exposed.length === 0) {
+      return { ok: false, message: "usage: mcp call <mcp__server__tool> :: <json arguments>" };
+    }
+    let input: Record<string, unknown> = {};
+    if (payload.trim().length > 0) {
+      try {
+        const parsed = JSON.parse(payload) as unknown;
+        if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+          return { ok: false, message: "mcp call: arguments must be a JSON object" };
+        }
+        input = parsed as Record<string, unknown>;
+      } catch {
+        return { ok: false, message: "mcp call: arguments must be valid JSON" };
+      }
+    }
+    const result = await callMcpTool(workspace, exposed, input);
+    return { ok: result.ok, message: result.output };
+  }
+
+  if (command !== "list") {
+    return { ok: false, message: "usage: mcp list | mcp call <mcp__server__tool> :: <json>" };
+  }
+
+  const status = await mcpStatus(workspace);
+  if (status.length === 0) {
+    return {
+      ok: true,
+      message: "no MCP servers configured. Add .weaver/mcp.json with a servers map.",
+    };
+  }
+
+  const lines: string[] = [];
+  for (const server of status) {
+    if (server.error) {
+      lines.push(`${server.server}: unavailable — ${server.error}`);
+      continue;
+    }
+    lines.push(`${server.server}:`);
+    for (const tool of server.tools) {
+      lines.push(`  ${tool.exposed}  ${tool.readOnly ? "read" : "writes"}  (${tool.name})`);
+    }
+  }
+  return { ok: true, message: lines.join("\n") };
+}
+
+/** Delegate a read-only research task to the inherited Weaver loop. */
+export function subagentAction(workspace: string, prompt: string): Promise<ActionResult> {
+  if (prompt.trim().length === 0) {
+    return Promise.resolve({ ok: false, message: "usage: subagent <prompt>" });
+  }
+
+  return new Promise((resolvePromise) => {
+    const binary = process.env.WEAVER_BIN ?? "weaver";
+    const child = spawn(
+      binary,
+      ["-p", prompt, "--permission", "readonly", "-C", workspace],
+      { cwd: workspace, windowsHide: true },
+    );
+    let output = "";
+    let settled = false;
+    const finish = (result: ActionResult): void => {
+      if (settled) return;
+      settled = true;
+      resolvePromise(result);
+    };
+
+    const timer = setTimeout(() => {
+      child.kill();
+      finish({ ok: false, message: "subagent timed out after 120s." });
+    }, 120_000);
+    timer.unref?.();
+
+    child.stdout?.on("data", (chunk: Buffer) => {
+      output += chunk.toString("utf8");
+    });
+    child.stderr?.on("data", (chunk: Buffer) => {
+      output += chunk.toString("utf8");
+    });
+    child.on("error", (error) => {
+      clearTimeout(timer);
+      const message =
+        (error as NodeJS.ErrnoException).code === "ENOENT"
+          ? `subagent needs Weaver on PATH. Install it, or set WEAVER_BIN. (${binary})`
+          : `could not start Weaver: ${error.message}`;
+      finish({ ok: false, message });
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      const text = output.trim();
+      finish({ ok: code === 0, message: text.length > 0 ? text : `Weaver exited ${code}` });
     });
   });
 }

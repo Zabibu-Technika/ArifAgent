@@ -1,6 +1,6 @@
 {
   "name": "arif-agent",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "description": "Arif Agent — the multi-axis extension of Zabibu Weaver: code, growth, and business operations on one verified core.",

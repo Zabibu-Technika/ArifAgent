@@ -42,8 +42,11 @@ import {
 import {
   analytics,
   draftInvoice,
+  lspAction,
+  mcpAction,
   queuePost,
   remember,
+  subagentAction,
   syncCheck,
   verify,
   type ActionResult,
@@ -217,6 +220,17 @@ export async function dispatch(workspace: string, raw: string, arifAgentRoot = A
 
     case "sync":
       return { kind: "result", result: await syncCheck(arifAgentRoot) };
+
+    case "lsp":
+      return { kind: "result", result: await lspAction(workspace, words.slice(1)) };
+
+    case "mcp":
+      return { kind: "result", result: await mcpAction(workspace, words.slice(1), payload[0]) };
+
+    case "subagent": {
+      const prompt = payload[0] ?? words.slice(1).join(" ");
+      return { kind: "result", result: await subagentAction(workspace, prompt) };
+    }
 
     case "decision": {
       const kind = (words[1] ?? "") as DecisionKind;
@@ -473,6 +487,9 @@ function helpRows(): Row[] {
     { text: "  /verify                            run checks, write a receipt", style: DIM },
     { text: "  /decision <kind> :: <title> :: <why>  record why", style: DIM },
     { text: "  /sync                              check the inherited core", style: DIM },
+    { text: "  /lsp <action> <file> [line] [char]  diagnostics / definition / references / hover", style: DIM },
+    { text: "  /mcp list | /mcp call <tool> :: <json>  configured MCP tools", style: DIM },
+    { text: "  /subagent <prompt>                 delegate read-only research to Weaver", style: DIM },
     { text: "  /refresh                           reload the snapshot", style: DIM },
     { text: "", style: DIM },
     { text: "keys", style: `${BOLD}${AMBER}` },

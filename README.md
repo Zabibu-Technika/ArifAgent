@@ -56,7 +56,7 @@ discards your edit; that is a deliberate speed bump, not an inconvenience to wor
 `arif-agent.exe` is a self-contained Windows x64 build: a native launcher, the official Node
 24 runtime, and the app. Node does not need to be installed on the machine.
 
-- **Download:** [arif-agent-0.2.0-win-x64.zip](https://github.com/Zabibu-Technika/ArifAgent/releases/latest/download/arif-agent-0.2.0-win-x64.zip)
+- **Download:** [arif-agent-0.3.0-win-x64.zip](https://github.com/Zabibu-Technika/ArifAgent/releases/latest/download/arif-agent-0.3.0-win-x64.zip)
 - **One-line install (PowerShell):**
 
   ```powershell
@@ -78,6 +78,25 @@ Build the package yourself:
 
 Measured release facts, package numbers, and the honest competitive position are in
 [BENCHMARKS.md](BENCHMARKS.md).
+
+## LSP, MCP, and subagents
+
+The inherited core now includes all three. The CLI exposes them directly:
+
+```bash
+arif-agent lsp diagnostics src/core/auth.ts
+arif-agent lsp definition src/core/auth.ts 42 7
+arif-agent mcp list
+arif-agent mcp call mcp__filesystem__read_file :: '{"path": "src/core/auth.ts"}'
+arif-agent subagent "review the auth expiry path"
+```
+
+- **LSP** reads `.weaver/lsp.json` and asks a language server for diagnostics, definitions,
+  references, or hover. It is read-only and never installs a server.
+- **MCP** reads `.weaver/mcp.json`; tools appear as `mcp__<server>__<tool>`. Unknown
+  capabilities default to asking, and results are marked external.
+- **Subagents** delegate a read-only research task to the shared Weaver loop. The packaged
+  Arif build does not include Weaver itself: install it on PATH or set `WEAVER_BIN`.
 
 ## Safety posture
 

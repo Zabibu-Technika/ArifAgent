@@ -21,6 +21,9 @@ const HELP = `
     arif-agent verify                  run the project's checks, write a receipt
     arif-agent decision <kind> :: <title> :: <why>
     arif-agent sync                    check the inherited core is current
+    arif-agent lsp <action> <file> [line] [character]
+    arif-agent mcp list | mcp call <tool> :: <json>
+    arif-agent subagent <prompt>       read-only research via the inherited Weaver loop
     arif-agent help
 
   options:
